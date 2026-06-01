@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Orla 50 Aniversario</title>
 
 <style>
@@ -27,14 +28,17 @@ body{
 
 .marco-orla{
     position:relative;
+
     max-width:1400px;
     margin:auto;
+
     padding:70px 50px;
 
     background:#fbf4e6;
 
     border:18px solid #b38b4d;
     border-radius:30px;
+
 
     box-shadow:
         0 0 40px rgba(0,0,0,0.2),
@@ -43,9 +47,11 @@ body{
 
 .marco-orla::before,
 .marco-orla::after{
-    content:"❦ ❧ ❦";
+    content:"";
+
     position:absolute;
-    font-size:70px;
+
+    font-size:50px;
     color:rgba(179,139,77,0.35);
 }
 
@@ -89,44 +95,24 @@ body{
 }
 
 /* =========================
-   ZONA SUPERIOR (escudo + sello)
+   ZONA SUPERIOR
 ========================= */
 
 .decor-top{
     display:flex;
     justify-content:center;
     align-items:center;
+
     gap:50px;
     margin-bottom:10px;
 }
 
 /* escudo */
+
 .escudo img{
     width:100px;
+
     filter:drop-shadow(0 8px 12px rgba(0,0,0,0.25));
-}
-
-/* sello de lacre */
-.sello{
-    width:80px;
-    height:80px;
-    border-radius:50%;
-
-    background:radial-gradient(circle at 30% 30%, #ff5a5a, #8b0000);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    color:white;
-    font-weight:bold;
-    font-size:18px;
-
-    transform:rotate(-8deg);
-
-    box-shadow:
-        inset 0 4px 10px rgba(255,255,255,0.25),
-        0 10px 18px rgba(0,0,0,0.25);
 }
 
 /* =========================
@@ -140,55 +126,98 @@ body{
 
 .titulo h1{
     margin:0;
-    font-size:40px;
+
+    font-size:clamp(24px, 4vw, 40px);
+
     letter-spacing:3px;
     color:#6f4a1f;
+
     text-shadow:0 2px 6px rgba(0,0,0,0.15);
 }
 
 .titulo p{
     margin-top:8px;
-    font-size:25px;
+
+    font-size:clamp(16px, 2.5vw, 25px);
+
     font-style:italic;
     color:#8a6a4a;
+}
+
+/* =========================
+   CENEFAS DECORATIVAS
+========================= */
+
+.cenefa-titulo{
+    display:block;
+    margin:15px auto;
+
+    width:min(450px, 80%);
+    height:auto;
+
+    opacity:.95;
+}
+
+@media (max-width:768px){
+
+    .cenefa-titulo{
+        width:min(320px, 85%);
+    }
+}
+
+.cenefa-titulo{
+    filter:
+        sepia(100%)
+        saturate(200%)
+        hue-rotate(5deg);
+
+    opacity:.85;
 }
 
 /* =========================
    ORLA
 ========================= */
 
-.fila{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:38px;
-    margin-bottom:45px;
+#orla{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));
+    gap:clamp(14px, 2vw, 28px);
+    justify-items:center;
 }
 
 .alumno{
-    width:210px;
+    width:100%;
+    max-width:150px;
     text-align:center;
 }
 
+
 /* =========================
-   FOTOS
+   FOTOS RESPONSIVE
 ========================= */
 
 .foto-wrapper{
     position:relative;
-    width:150px;
-    height:200px;
+
+    width:100%;
+	/* max-width:210px */
+    max-width:150px;
+
+    aspect-ratio:3/4;
+
     margin:auto;
 }
 
 /* FOTO PRINCIPAL */
+
 .foto-principal{
     width:100%;
     height:100%;
+
     object-fit:cover;
 
     border-radius:50% / 38%;
-    border:5px solid #d9bf8f;
+    border:clamp(2px, 0.5vw, 5px) solid #d9bf8f;
 
     box-shadow:0 8px 18px rgba(0,0,0,0.18);
 
@@ -196,18 +225,21 @@ body{
 }
 
 /* FOTO SECUNDARIA */
+
 .foto-secundaria{
     position:absolute;
-    bottom:-15px;
-    right:-40px;
 
-    width:60px;
-    height:80px;
+    bottom:-4%;
+    right:-20%;
+
+    width:40%;
+
+    aspect-ratio:3/4;
 
     border-radius:50%;
     object-fit:cover;
 
-    border:5px solid white;
+    border:clamp(1px, 0.25vw, 3px) solid white;
 
     box-shadow:0 5px 14px rgba(0,0,0,0.28);
 
@@ -219,15 +251,18 @@ body{
 ========================= */
 
 .nombre{
-    margin-top:25px;
-    font-size:15px;
+    margin-top:15px;
+
+    font-size:11px;
     font-weight:bold;
+
     color:#5f3d1c;
 }
 
 .residencia{
-    font-size:13px;
+    font-size:11px;
     font-style:italic;
+
     color:#86684a;
 }
 
@@ -237,6 +272,7 @@ body{
 
 .popup{
     display:none;
+
     position:fixed;
     inset:0;
 
@@ -256,7 +292,75 @@ body{
     border:8px solid white;
 
     box-shadow:0 0 35px rgba(0,0,0,0.45);
+
     cursor:pointer;
+}
+
+/* =========================
+   RESPONSIVE TABLET/MÓVIL
+========================= */
+
+@media (max-width:768px){
+
+    body{
+        padding:15px;
+    }
+
+    .marco-orla{
+        padding:35px 15px;
+        border-width:10px;
+    }
+
+    .decor-top{
+        gap:20px;
+    }
+
+    .escudo img{
+        width:70px;
+    }
+
+    .nombre{
+        font-size:13px;
+    }
+
+    .residencia{
+        font-size:11px;
+    }
+
+    .fila{
+        gap:18px;
+    }
+
+    .foto-wrapper{
+        width:min(28vw, 130px);
+    }
+}
+
+/* =========================
+   MÓVILES PEQUEÑOS
+========================= */
+
+@media (max-width:480px){
+
+    .foto-wrapper{
+        width:min(32vw, 100px);
+    }
+
+    .alumno{
+        min-width:90px;
+    }
+
+    .nombre{
+        font-size:12px;
+    }
+
+    .residencia{
+        font-size:10px;
+    }
+
+    .titulo{
+        margin:25px 0 40px;
+    }
 }
 
 </style>
@@ -267,27 +371,45 @@ body{
 <div class="marco-orla">
 
     <div class="toolbar">
-        <button id="toggleFotos">Intercambiar fotos</button>
+        <button id="toggleFotos">
+            Intercambiar fotos
+        </button>
     </div>
-	
-	 <div class="decor-top">
+
+    <div class="decor-top">
 
         <div class="escudo">
             <img src="fotos/escudo1.png">
         </div>
 
-     </div>
+    </div>
 
     <div class="titulo">
-        <h1>Colegio ..... </h1>
-        <p>50 Aniversario C.O.U. (1976-2026)</p>
-    </div>
+
+    <img
+        src="fotos/cenefa.png"
+        class="cenefa-titulo"
+        alt="Cenefa decorativa">
+
+    <h1>Colegio .....</h1>
+
+    <p>
+        50 Aniversario C.O.U. (1976-2026)
+    </p>
+
+    <img
+        src="fotos/cenefa.png"
+        class="cenefa-titulo"
+        alt="Cenefa decorativa">
+
+</div>
 
     <div id="orla"></div>
 
 </div>
 
 <!-- POPUP -->
+
 <div class="popup" id="popup">
     <img id="imagenPopup">
 </div>
@@ -299,36 +421,70 @@ body{
 ========================= */
 
 const data = [
-     {
-    "nombre": "Alfonso Callejo Carbajo",
-    "residencia": "Cáceres",
-    "foto_bn": "fotos/Alfonso_bn.jpg",
-    "foto_color": "fotos/Alfonso_color.jpg"
-  },
-  {
-    "nombre": "Basilio Sánchez González",
-    "residencia": "Cáceres",
-    "foto_bn": "fotos/Basilio_bn.jpg",
-    "foto_color": "fotos/Basilio_color.jpg"
-  },
-  {
-    "nombre": "Francisco León Duque",
-    "residencia": "Talavera de la Reina",
-    "foto_bn": "fotos/quico_bn.jpg",
-    "foto_color": "fotos/Quico_color.jpg"
-  },
-  {
-    "nombre": "Joaquín Municio Durán",
-    "residencia": "Cáceres",
-    "foto_bn": "fotos/Quini_bn.jpg",
-    "foto_color": "fotos/Quini_color.jpg"
-  },
-  {
-    "nombre": "Tomás Barroso Gracia",
-    "residencia": "Algeciras",
-    "foto_bn": "fotos/Tomas_bn.jpg",
-    "foto_color": "fotos/Tomas_color.jpg"
-  }
+
+{
+    nombre:"Tomás Barroso Gracia",
+    residencia:"Algeciras",
+    foto_bn:"fotos/Tomas_bn.jpg",
+    foto_color:"fotos/Tomas_color.jpg"
+},
+
+{
+    nombre:"Alfonso Callejo Carbajo",
+    residencia:"Cáceres",
+    foto_bn:"fotos/Alfonso_bn.jpg",
+    foto_color:"fotos/Alfonso_color.jpg"
+},
+
+{
+    nombre:"Francisco León Duque",
+    residencia:"Talavera de la Reina",
+    foto_bn:"fotos/Quico_bn.jpg",
+    foto_color:"fotos/Quico_color.jpg"
+},
+
+{
+    nombre:"Joaquín Municio Durán",
+    residencia:"Cáceres",
+    foto_bn:"fotos/Quini_bn.jpg",
+    foto_color:"fotos/Quini_color.jpg"
+},
+
+{
+    nombre:"Basilio Sánchez González",
+    residencia:"Cáceres",
+    foto_bn:"fotos/Basilio_bn.jpg",
+    foto_color:"fotos/Basilio_color.jpg"
+},
+
+{
+    nombre:"Joaquín Municio Durán",
+    residencia:"Cáceres",
+    foto_bn:"fotos/Quini_bn.jpg",
+    foto_color:"fotos/Quini_color.jpg"
+},
+
+{
+    nombre:"Basilio Sánchez González",
+    residencia:"Cáceres",
+    foto_bn:"fotos/Basilio_bn.jpg",
+    foto_color:"fotos/Basilio_color.jpg"
+},
+
+{
+    nombre:"Tomás Barroso Gracia",
+    residencia:"Algeciras",
+    foto_bn:"fotos/Tomas_bn.jpg",
+    foto_color:"fotos/Tomas_color.jpg"
+},
+
+{
+    nombre:"Alfonso Callejo Carbajo",
+    residencia:"Cáceres",
+    foto_bn:"fotos/Alfonso_bn.jpg",
+    foto_color:"fotos/Alfonso_color.jpg"
+}
+
 ];
 
 /* =========================
@@ -337,40 +493,41 @@ const data = [
 
 const contenedor = document.getElementById("orla");
 
-for(let i=0;i<data.length;i+=5){
+data.forEach(alumno => {
 
-    const fila = document.createElement("div");
-    fila.className = "fila";
+    const div = document.createElement("div");
 
-    data.slice(i,i+5).forEach(alumno=>{
+    div.className = "alumno";
 
-        const div = document.createElement("div");
-        div.className = "alumno";
+    div.innerHTML = `
 
-        div.innerHTML = `
-        <div class="foto-wrapper">
+    <div class="foto-wrapper">
 
-            <img class="foto-principal abrir"
-                 src="${alumno.foto_bn}"
-                 data-bn="${alumno.foto_bn}"
-                 data-color="${alumno.foto_color}">
+        <img class="foto-principal abrir"
+             src="${alumno.foto_bn}"
+             data-bn="${alumno.foto_bn}"
+             data-color="${alumno.foto_color}">
 
-            <img class="foto-secundaria abrir"
-                 src="${alumno.foto_color}"
-                 data-bn="${alumno.foto_bn}"
-                 data-color="${alumno.foto_color}">
+        <img class="foto-secundaria abrir"
+             src="${alumno.foto_color}"
+             data-bn="${alumno.foto_bn}"
+             data-color="${alumno.foto_color}">
 
-        </div>
+    </div>
 
-        <div class="nombre">${alumno.nombre}</div>
-        <div class="residencia">${alumno.residencia}</div>
-        `;
+    <div class="nombre">
+        ${alumno.nombre}
+    </div>
 
-        fila.appendChild(div);
-    });
+    <div class="residencia">
+        ${alumno.residencia}
+    </div>
 
-    contenedor.appendChild(fila);
-}
+    `;
+
+    contenedor.appendChild(div);
+
+});
 
 /* =========================
    POPUP
@@ -382,13 +539,16 @@ const imagenPopup = document.getElementById("imagenPopup");
 document.addEventListener("click",(e)=>{
 
     if(e.target.classList.contains("abrir")){
+
         imagenPopup.src = e.target.src;
         popup.style.display = "flex";
     }
 
     if(e.target.id === "popup"){
+
         popup.style.display = "none";
     }
+
 });
 
 /* =========================
@@ -397,14 +557,19 @@ document.addEventListener("click",(e)=>{
 
 let estadoBN = true;
 
-document.getElementById("toggleFotos").addEventListener("click", () => {
+document.getElementById("toggleFotos")
+.addEventListener("click", () => {
 
     estadoBN = !estadoBN;
 
-    document.querySelectorAll(".foto-wrapper").forEach(wrapper => {
+    document.querySelectorAll(".foto-wrapper")
+    .forEach(wrapper => {
 
-        const principal = wrapper.querySelector(".foto-principal");
-        const secundaria = wrapper.querySelector(".foto-secundaria");
+        const principal =
+            wrapper.querySelector(".foto-principal");
+
+        const secundaria =
+            wrapper.querySelector(".foto-secundaria");
 
         if(estadoBN){
 
@@ -415,7 +580,6 @@ document.getElementById("toggleFotos").addEventListener("click", () => {
 
             principal.src = principal.dataset.color;
             secundaria.src = secundaria.dataset.bn;
-
         }
 
     });
